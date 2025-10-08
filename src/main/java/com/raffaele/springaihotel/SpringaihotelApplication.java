@@ -7,8 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SpringaihotelApplication
 {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringaihotelApplication.class, args);
-	}
+  public static void main(String[] args)
+  {
+    SpringApplication.run(SpringaihotelApplication.class, args);
+  }
 
 }

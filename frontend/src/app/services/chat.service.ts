@@ -16,10 +16,11 @@ export interface ChatResponse {
 export class ChatService {
   private readonly apiUrl = '/api/customer-support';
 
-  constructor(private readonly httpClient: HttpClient) {}
+  constructor(private readonly httpClient: HttpClient) {
+  }
 
   sendMessage(message: string): Observable<ChatResponse> {
-    const chatMessage: ChatMessage = { text: message };
+    const chatMessage: ChatMessage = {text: message};
     return this.httpClient.post<ChatResponse>(this.apiUrl, chatMessage);
   }
 }

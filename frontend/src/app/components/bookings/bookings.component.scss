@@ -44,16 +44,16 @@
       font-size: 2rem;
       font-weight: 600;
       letter-spacing: 0.5px;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
   }
 
   .refresh-button {
     color: #fff;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 50%;
     padding: 0.5rem;
-    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+    transition: all 0.3s cubic-bezier(.4, 2, .6, 1);
 
     &:hover:not(:disabled) {
       background-color: #ffd600;
@@ -125,6 +125,7 @@
         color: #fff;
         font-weight: 500;
         transition: background 0.2s;
+
         &:hover {
           background: #0056b3;
         }
@@ -216,6 +217,7 @@
       font-size: 0.98rem;
       text-transform: uppercase;
     }
+
     mat-chip {
       font-size: 0.95rem;
       font-weight: 700;
@@ -235,12 +237,14 @@
         border: 1px solid #43e97b;
         box-shadow: 0 2px 8px #43e97b33;
       }
+
       &.status-completed {
         background: linear-gradient(90deg, #b6e0fe 0%, #4fd1c5 100%);
         color: #0c5460;
         border: 1px solid #4fd1c5;
         box-shadow: 0 2px 8px #4fd1c533;
       }
+
       &.status-cancelled {
         background: linear-gradient(90deg, #f8bbd0 0%, #f44336 100%);
         color: #fff;
@@ -285,59 +289,83 @@
 
 // Keyframes for refresh button animation
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 // Dark mode
 @media (prefers-color-scheme: dark) {
   .bookings-container {
     background: linear-gradient(135deg, #181a1b 0%, #23272b 100%);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
   }
   .bookings-header {
     background-color: #033778;
     color: #e0e0e0;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.25);
-    .header-icon { color: #ffd600; }
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+
+    .header-icon {
+      color: #ffd600;
+    }
   }
   .filters-card, .table-card {
     background: #23272b;
     border: 1px solid #333;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
   }
-  .filters-card mat-card-title { color: #ffd600; }
-  .table-container { background: #181a1b; border: 1px solid #333; }
+  .filters-card mat-card-title {
+    color: #ffd600;
+  }
+  .table-container {
+    background: #181a1b;
+    border: 1px solid #333;
+  }
   .bookings-table {
     th {
       background-color: #222e3c;
       color: #ffd600;
       border-bottom: 2px solid #333;
     }
+
     td, th {
       border-bottom: 1px solid #333;
       color: #e0e0e0;
     }
-    tr:hover { background-color: #222e3c55; }
-    .booking-number { color: #ffd600; }
+
+    tr:hover {
+      background-color: #222e3c55;
+    }
+
+    .booking-number {
+      color: #ffd600;
+    }
+
     .guest {
       background: linear-gradient(90deg, #222e3c 60%, #033778 100%);
       color: #ffd600;
     }
+
     .room-class {
       background: #222e3c;
       color: #ffd600;
     }
+
     mat-chip.status-confirmed {
       background: linear-gradient(90deg, #1e4620 60%, #388e3c 100%);
       color: #4caf50;
       border: 1px solid #388e3c;
     }
+
     mat-chip.status-completed {
       background: linear-gradient(90deg, #23272b 60%, #033778 100%);
       color: #ffd600;
       border: 1px solid #033778;
     }
+
     mat-chip.status-cancelled {
       background: linear-gradient(90deg, #23272b 60%, #616161 100%);
       color: #bdbdbd;
@@ -346,8 +374,14 @@
   }
   .no-data {
     color: #b0b0b0;
-    .no-data-icon { color: #ffd600; }
-    h3 { color: #ffd600; }
+
+    .no-data-icon {
+      color: #ffd600;
+    }
+
+    h3 {
+      color: #ffd600;
+    }
   }
 }
 

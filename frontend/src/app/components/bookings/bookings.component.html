@@ -5,10 +5,10 @@
       <div class="title-section">
         <mat-icon class="header-icon">hotel</mat-icon>
         <h1>SpringAI Hotel Bookings</h1>
-        <button mat-icon-button
-                (click)="refreshBookings()"
-                matTooltip="Refresh bookings data"
-                class="refresh-button">
+        <button (click)="refreshBookings()"
+                class="refresh-button"
+                mat-icon-button
+                matTooltip="Refresh bookings data">
           <mat-icon>refresh</mat-icon>
         </button>
       </div>
@@ -19,36 +19,36 @@
   <mat-card class="table-card">
     <mat-card-content>
       <div class="table-container">
-        <table mat-table [dataSource]="dataSource()" matSort class="bookings-table">
+        <table [dataSource]="dataSource()" class="bookings-table" mat-table matSort>
 
           <!-- Booking Number Column -->
           <ng-container matColumnDef="bookingNumber">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Number</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Number</th>
+            <td *matCellDef="let booking" mat-cell>
               <span class="booking-number">{{ booking.bookingNumber }}</span>
             </td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Name</th>
+            <td *matCellDef="let booking" mat-cell>
               <span class="guest">{{ booking.firstName }} {{ booking.lastName }}</span>
             </td>
           </ng-container>
 
           <!-- Date Column -->
           <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Booking Date</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Booking Date</th>
+            <td *matCellDef="let booking" mat-cell>
               <span class="date-cell">{{ booking.date | date:'MMM d, y' }}</span>
             </td>
           </ng-container>
 
           <!-- Status Column -->
           <ng-container matColumnDef="bookingStatus">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Status</th>
+            <td *matCellDef="let booking" mat-cell>
               <mat-chip
                 [class]="'status-' + booking.bookingStatus.toLowerCase()"
                 selected>
@@ -59,30 +59,30 @@
 
           <!-- From Column -->
           <ng-container matColumnDef="from">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>From</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>From</th>
+            <td *matCellDef="let booking" mat-cell>
               <span class="date-cell">{{ booking.from | date:'MMM d, y' }}</span>
             </td>
           </ng-container>
 
           <!-- To Column -->
           <ng-container matColumnDef="to">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>To</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>To</th>
+            <td *matCellDef="let booking" mat-cell>
               <span class="date-cell">{{ booking.to | date:'MMM d, y' }}</span>
             </td>
           </ng-container>
 
           <!-- Booking Class Column -->
           <ng-container matColumnDef="roomType">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Room Type</th>
-            <td mat-cell *matCellDef="let booking">
+            <th *matHeaderCellDef mat-header-cell mat-sort-header>Room Type</th>
+            <td *matCellDef="let booking" mat-cell>
               <span class="room-class">{{ booking.roomType }}</span>
             </td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns()"></tr>
+          <tr *matHeaderRowDef="displayedColumns()" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: displayedColumns()" mat-row></tr>
         </table>
 
         <!-- No data message -->

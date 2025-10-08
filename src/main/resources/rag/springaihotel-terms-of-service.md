@@ -5,6 +5,7 @@ Welcome to **SpringAI Hotel**. These Terms of Service outline the rules and cond
 ---
 
 ## 1. Booking Rooms
+
 - Reservations can be made through our official website, mobile app, or authorized travel agents.
 - Full payment is required at the time of booking unless stated otherwise.
 - Please ensure that all personal details (e.g., name, ID information, contact details) are accurate. A correction fee of **€25** may apply for amendments.
@@ -14,6 +15,7 @@ Welcome to **SpringAI Hotel**. These Terms of Service outline the rules and cond
 ---
 
 ## 2. Changes to Bookings
+
 - Changes can be made up to **24 hours before** your scheduled arrival.
 - You can make changes online, through the mobile app, or by contacting our customer support team.
 - Change fees apply based on room category:
@@ -26,6 +28,7 @@ Welcome to **SpringAI Hotel**. These Terms of Service outline the rules and cond
 ---
 
 ## 3. Cancellations
+
 - Cancellations are accepted up to **48 hours before** the scheduled arrival date.
 - Cancellation fees apply based on room category:
     - **Standard Room**: €75
@@ -38,6 +41,7 @@ Welcome to **SpringAI Hotel**. These Terms of Service outline the rules and cond
 ---
 
 ## 4. Check-in & Check-out
+
 - **Check-in:** From 2:00 PM
 - **Check-out:** By 11:00 AM
 - Early check-in and late check-out are subject to availability and may incur additional charges.

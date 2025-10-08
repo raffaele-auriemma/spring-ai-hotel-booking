@@ -11,18 +11,20 @@ public record BookingDetails(
     LocalDate from,
     LocalDate to,
     String roomType
-) { 
+)
+{
 
-  public BookingDetails(Booking booking) {
+  public BookingDetails(Booking booking)
+  {
     this(
-      booking.getBookingNumber(),
-      booking.getGuest().firstName(),
-      booking.getGuest().lastName(),
-      booking.getDate(),
-      booking.getBookingStatus(),
-      booking.getFrom(),
-      booking.getTo(),
-      booking.getBookingClass().name()
+        booking.getBookingNumber(),
+        booking.getGuest().firstName(),
+        booking.getGuest().lastName(),
+        booking.getDate(),
+        booking.getBookingStatus(),
+        booking.getFrom(),
+        booking.getTo(),
+        booking.getBookingClass().name()
     );
   }
 }

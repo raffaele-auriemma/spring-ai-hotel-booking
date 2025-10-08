@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div class="chat-messages" #messagesContainer>
+  <div #messagesContainer class="chat-messages">
     @for (message of messages(); track message.id) {
       <div class="message-wrapper" [class.user-message]="message.isUser" [class.assistant-message]="!message.isUser">
         <div class="message-avatar">
@@ -55,23 +55,23 @@
   </div>
 
   <div class="chat-input-container">
-    <mat-form-field class="chat-input" appearance="outline">
+    <mat-form-field appearance="outline" class="chat-input">
       <mat-label>Message</mat-label>
       <input
-        matInput
-        [(ngModel)]="currentMessage"
         (keypress)="onKeyPress($event)"
-        placeholder="Type your message here..."
-        [disabled]="isLoading()">
+        [(ngModel)]="currentMessage"
+        [disabled]="isLoading()"
+        matInput
+        placeholder="Type your message here...">
       <mat-icon matSuffix>chat</mat-icon>
     </mat-form-field>
 
     <button
-      mat-fab
-      color="primary"
-      class="send-button"
       (click)="sendMessage()"
-      [disabled]="!currentMessage().trim() || isLoading()">
+      [disabled]="!currentMessage().trim() || isLoading()"
+      class="send-button"
+      color="primary"
+      mat-fab>
       <mat-icon class="white-icon">send</mat-icon>
     </button>
   </div>

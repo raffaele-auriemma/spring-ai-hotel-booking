@@ -65,6 +65,7 @@ The Angular app will be available at `http://localhost:4200`.
 
 - Swagger/OpenAPI: `http://localhost:8080/swagger-ui.html`
 - Health: `http://localhost:8080/actuator/health`
+- Metrics: `http://localhost:8080/actuator/metrics`
 
 ## Configuration
 
@@ -72,9 +73,24 @@ Edit `src/main/resources/application.yml` for backend settings (database, AI, lo
 
 ## Project Structure
 
-- `src/main/java/com/raffaele/springaihotel/` — Spring Boot backend
-- `frontend/` — Angular frontend
-- `src/main/resources/rag/` — RAG documents (e.g., Terms of Service)
+```
+spring-ai-hotel-booking/
+├── src/main/java/com/raffaele/springaihotel/
+│   ├── controller/          # REST controllers
+│   ├── service/             # Business logic and AI services
+│   └── model/               # Data models
+├── src/main/resources/
+│   ├── application.yml      # Application configuration
+│   └── rag/                 # RAG documents
+├── frontend/
+│   ├── src/app/
+│   │   ├── components/      # Angular components
+│   │   ├── services/        # Angular services
+│   │   └── types/           # TypeScript interfaces
+│   └── package.json
+├── compose.yaml             # Docker Compose configuration
+└── pom.xml                  # Maven configuration
+```
 
 ## License
 

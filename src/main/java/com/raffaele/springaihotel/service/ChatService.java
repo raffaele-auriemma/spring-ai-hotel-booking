@@ -8,9 +8,8 @@ import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ChatService {
-  
-  private final ChatClient chatClient;
+public class ChatService
+{
 
   private static final String SYSTEM = """
       You are a friendly, helpful, and joyful customer support agent for SpringAI Hotel. Respond clearly and professionally in our online chat.
@@ -29,24 +28,27 @@ public class ChatService {
       
       Tools available: Booking management functions (fetch details, modify reservations, process cancellations).
       """;
+  private final ChatClient chatClient;
 
   public ChatService(ChatClient.Builder chatClientBuilder, ChatMemory chatMemory,
-    VectorStore vectorStore, BookingTools bookingTools) {
+      VectorStore vectorStore, BookingTools bookingTools)
+  {
     this.chatClient = chatClientBuilder
-                .defaultSystem(SYSTEM)
-                .defaultAdvisors(
-                        MessageChatMemoryAdvisor.builder(chatMemory).build(),
-                        QuestionAnswerAdvisor.builder(vectorStore).build()
-                )
-                .defaultTools(bookingTools)
-                .build();
+        .defaultSystem(SYSTEM)
+        .defaultAdvisors(
+            MessageChatMemoryAdvisor.builder(chatMemory).build(),
+            QuestionAnswerAdvisor.builder(vectorStore).build()
+        )
+        .defaultTools(bookingTools)
+        .build();
   }
 
-  public String chat(String chatId, String userMessage) {
+  public String chat(String chatId, String userMessage)
+  {
     return chatClient.prompt()
-            .user(userMessage)
-            .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, chatId))
-            .call()
-			      .content();	
+        .user(userMessage)
+        .advisors(a -> a.param(ChatMemory.CONVERSATION_ID, chatId))
+        .call()
+        .content();
   }
 }

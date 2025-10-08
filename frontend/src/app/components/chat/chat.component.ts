@@ -1,4 +1,4 @@
-import { Component, signal, ViewChild, ElementRef, effect } from '@angular/core';
+import { Component, effect, ElementRef, signal, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
@@ -20,9 +20,9 @@ interface Message {
 }
 
 @Component({
-  selector: 'app-chat',
-  standalone: true,
-  imports: [
+  selector:    'app-chat',
+  standalone:  true,
+  imports:     [
     CommonModule,
     FormsModule,
     MatCardModule,
@@ -36,27 +36,24 @@ interface Message {
     MatProgressSpinnerModule
   ],
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  styleUrls:   ['./chat.component.scss']
 })
 export class ChatComponent {
-  // ViewChild reference to the messages container for auto-scrolling
-  @ViewChild('messagesContainer') private readonly messagesContainer!: ElementRef;
-
   // Signals for reactive state management
   messages = signal<Message[]>([
     {
-      id: '1',
-      content: 'Hello, how can I help you today? 😊',
-      isUser: false,
+      id:        '1',
+      content:   'Hello, how can I help you today? 😊',
+      isUser:    false,
       timestamp: new Date(),
     }
   ]);
-
   currentMessage = signal('');
   isLoading = signal(false);
-
   // Computed signal for display columns
   displayedColumns = signal(['bookingNumber', 'firstName', 'lastName', 'date', 'bookingStatus', 'from', 'to', 'roomType']);
+  // ViewChild reference to the messages container for auto-scrolling
+  @ViewChild('messagesContainer') private readonly messagesContainer!: ElementRef;
 
   constructor(private readonly chatService: ChatService) {
     // Effect to auto-scroll when messages change
@@ -68,14 +65,18 @@ export class ChatComponent {
   }
 
   sendMessage() {
-    const messageText = this.currentMessage().trim();
-    if (!messageText) return;
+    const messageText = this.currentMessage()
+      .trim();
+    if (!messageText) {
+      return;
+    }
 
     // Add user message
     const userMessage: Message = {
-      id: Date.now().toString(),
-      content: messageText,
-      isUser: true,
+      id:        Date.now()
+                   .toString(),
+      content:   messageText,
+      isUser:    true,
       timestamp: new Date()
     };
 
@@ -84,33 +85,34 @@ export class ChatComponent {
     this.isLoading.set(true);
 
     // Send message to API
-    this.chatService.sendMessage(messageText).subscribe({
-      next: (response) => {
-        const aiResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          content: response.text,
-          isUser: false,
-          timestamp: new Date()
-        };
+    this.chatService.sendMessage(messageText)
+      .subscribe({
+        next:  (response) => {
+          const aiResponse: Message = {
+            id:        (Date.now() + 1).toString(),
+            content:   response.text,
+            isUser:    false,
+            timestamp: new Date()
+          };
 
-        this.messages.update(messages => [...messages, aiResponse]);
-        this.isLoading.set(false);
-      },
-      error: (error) => {
-        console.error('Error sending message:', error);
+          this.messages.update(messages => [...messages, aiResponse]);
+          this.isLoading.set(false);
+        },
+        error: (error) => {
+          console.error('Error sending message:', error);
 
-        // Fallback message if API fails
-        const errorResponse: Message = {
-          id: (Date.now() + 1).toString(),
-          content: 'Sorry, I\'m having trouble connecting right now. Please try again in a moment.',
-          isUser: false,
-          timestamp: new Date()
-        };
+          // Fallback message if API fails
+          const errorResponse: Message = {
+            id:        (Date.now() + 1).toString(),
+            content:   'Sorry, I\'m having trouble connecting right now. Please try again in a moment.',
+            isUser:    false,
+            timestamp: new Date()
+          };
 
-        this.messages.update(messages => [...messages, errorResponse]);
-        this.isLoading.set(false);
-      }
-    });
+          this.messages.update(messages => [...messages, errorResponse]);
+          this.isLoading.set(false);
+        }
+      });
   }
 
   onKeyPress(event: KeyboardEvent) {
